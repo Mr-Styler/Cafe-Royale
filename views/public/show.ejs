@@ -1,0 +1,50 @@
+<%- include ('../partials/header') %>
+<title>Cook App</title>
+</head>
+<body>
+<%- include ('../partials/nav') %>
+    <div class="container mt-3">
+        <div>
+            <h1><%= recipe.title %></h1>
+        </div>
+        <div class="mt-4 rounded card-shadow recipe-show-card">
+            <img class="mx-auto d-block recipe-image" src="../images/<%= recipe.image %>">
+            <div class="recipe-content p-3">
+                <span class="recipe-date"><%= recipe.createdAt.toDateString() %></span>
+                <p><%= recipe.body %></p>
+
+                <h3>Steps:</h3>
+                <ul class="recipe-steps">
+                    <% recipe.steps.forEach(step => { %>
+                    <li class="recipe-step">
+                        <div>
+                            <h5 class="step-title"><%= step.title %></h5>
+                            <img src="../images/<%= step.image %>" alt="<%= step.title%>" class="mx-auto d-block recipe-image">
+                            <p class="step-body"><%= step.body %></p>
+                        </div>
+                    </li>
+                    <% }) %>
+                </ul>
+
+                <h3 class="nutrients">Nutrients:</h3>
+                <ul class="nutrient-list">
+                    <% recipe.nutrient.forEach(nutrient => { %>
+                    <li class="nutrient-item">
+                        <p><%= nutrient %></p>
+                    </li>
+                    <% }) %>
+                </ul>
+                <div class="recipe-comment-section">
+                    <form class="d-flex" action="" method="post">
+                        <div class="input-group">
+                            <input class="form-control settings-input" type="text" name="comment" id="" placeholder="write a comment...">
+                            <a class="btn btn-gold" href="/recipe/<%= recipe._id %>/comment">Comment</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<%- include ('../partials/footer') %>
+<%- include ('../partials/end') %>

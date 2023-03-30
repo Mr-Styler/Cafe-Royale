@@ -1,0 +1,16 @@
+<%- include ('../partials/header') %>
+    <link rel="stylesheet" href="/styles/main.css">
+<title>Cook App</title>
+</head>
+<body>
+<%- include ('../partials/nav') %>
+<div class="ui main text violet container segment myForm">
+    <div class="ui huge header">Edit <%= recipe.title%></div>
+    <form class="ui form" action="/recipes/<%= recipe._id %>?_method=PUT" method="put">
+        <div class="field"><input type="text" name="recipe[title]" id="" value="<%= recipe.title %>"></div>
+        <div class="field"><input type="text" name="recipe[image]" id="" value="<%= recipe.image %>"></div>
+        <div class="field"><input type="text" name="recipe[body]" id="" value="<%= recipe.body%>"></div>
+        <div class="field"><input class="ui violet inverted button" type="submit" value="Submit"></div>
+    </form>
+</div>
+<%- include ('../partials/footer') %>

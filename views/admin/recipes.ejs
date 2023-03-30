@@ -1,0 +1,24 @@
+<%- include ('../partials/header') %>
+
+<title>Cook App</title>
+</head>
+<body>
+
+    <%- include ('../partials/nav') %>
+    <div class="ui container">
+      <a class="ui inverted button violet " href="/admin/recipes/new">Add New</a>
+    <div class="ui grid">
+      <% recipes.forEach(recipe =>{ %>
+        <div class="four wide column" style=" text-align:center;">
+          <div class="ui segment">
+            <img src="../images/<%= recipe.image %>" style="max-width: 100%; max-height: 150px">
+            <h3><%= recipe.title %></h3>
+            <p><%= recipe.body.substring(0, 100)%>...</p>
+            <a href="/admin/recipes/<%= recipe._id%>/edit" class="ui inverted orange button">Edit</a>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+    </div>
+      
+    <%- include ('../partials/footer') %>

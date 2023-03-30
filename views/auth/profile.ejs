@@ -1,0 +1,85 @@
+<%- include ('../partials/header') %>
+
+<title>Shop</title>
+</head>
+<body>
+
+    <%- include ('../partials/nav') %>
+    <div class="container">
+        <section class="user-details text-center mt-3">
+            <img src="../<%= currentUser.image %>" alt="" class="user-profile-img mb-3">
+            <h1>Hello, <%= currentUser.username %></h1>
+        </section>
+
+      <section class="pt-5 mt-5 user-cart">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-10">
+              <div class="card">
+                <h3 class="text-center">Your Cart</h3>
+                <div class="table-responsive">
+                  <table class="table align-items-center mb-0">
+                    <thead>
+                      <tr>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Price</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Quantity</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% currentUser.cart.items.forEach(product => { %>
+                        <tr>
+                          <td>
+                            <div class="d-flex px-2">
+                              <div>
+                                <img src="../../images/<%= product.productId.image %>" width="30" height="30" class="avatar avatar-sm rounded-circle me-2">
+                              </div>
+                              <div class="my-auto">
+                                <h6 class="mb-0 text-xs"><%= product.productId.name %></h6>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <p class="text-xs font-weight-bold mb-0 ">$<span class="cart-price"><%= product.productId.price %></span></p>
+                          </td>
+                          <td class="form-group">
+                            <button class="cart-qty-btn cart-minus" onclick="cart_minus(this)">-</button>
+                            <input type="number" class="cart-qty-input ms-3" min="1" name="qty" id="" value="<%= product.quantity %>">
+                            <button class="cart-qty-btn cart-plus" onclick="cart_plus(this)">+</button>
+                          </td>
+                          <td class="align-middle text-center ">
+                            <p class="">$<span class="cart-sub-total"><%= product.productId.price * product.quantity %></span></p>
+                          </td>
+        
+                          <td class="align-middle">
+                            <button class="btn btn-link text-secondary mb-0">
+                              <i class="fa fa-ellipsis-v text-xs"></i>
+                            </button>
+                          </td>
+                        </tr>
+        
+                      <% }) %>
+                      <tr>
+                        <td><h5>Grand Total</h5></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><p>$</p></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+      
+    <%- include ('../partials/footer') %>
+    <%- include ('../partials/end') %>
+    <script src="../../js/cart.js"></script>
