@@ -18,8 +18,11 @@ var userSchema = new mongoose.Schema({
                 ref: 'Meal'
             },
             quantity: {type:Number, default: 1},
-            total: Number
         }],
+        total: {
+            type: Number,
+            default: 0
+        }
     },
     
 },

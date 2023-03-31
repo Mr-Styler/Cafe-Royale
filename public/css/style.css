@@ -2,7 +2,6 @@
 
 :root {
     --bs-gradient-gold: linear-gradient(to bottom right, #ffb302, #ffba01, #fec300, #ffcf00, #fed901, #ffdf01);
-    --bs-light-gold: rgba(254, 195, 0, 0.6);
     --bs-gradient-purple: linear-gradient(to bottom right, blueviolet, purple);
 }
 
@@ -125,6 +124,10 @@ form.justify-content-center.d-flex.me-4 {
     min-height: 75vh!important;
 }
 
+.mt-6 {
+    margin-top: 6rem!important;
+}
+
 .mt-n6 {
     margin-top: -4rem!important;
 }
@@ -164,6 +167,14 @@ form.justify-content-center.d-flex.me-4 {
 }
 
 /* SETTINGS */
+
+.fixed-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
 
 .nav-link.btn-gold {
     background: none;
@@ -207,7 +218,8 @@ form.justify-content-center.d-flex.me-4 {
 }
 
 .cart-qty-btn {
-    background: var(--bs-light-gold);
+    background: var(--bs-gradient-gold);
+    opacity: .6;
     border: none;
     width: 1.8rem;
     height: 1.8rem;
@@ -223,3 +235,16 @@ form.justify-content-center.d-flex.me-4 {
 .table-responsive .table tr {
     vertical-align: middle;
 }
+
+.cart-card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.cart-header {
+    color: #fed901;
+}
+.grand-total {
+    font-size: 1.4rem;
+    margin: 0;
+}
+
