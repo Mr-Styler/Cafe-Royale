@@ -1,27 +1,32 @@
 <%- include ('../partials/header') %>
 
-<title>Cook App</title>
-</head>
-<body>
+  <title>Cook App</title>
+  </head>
+
+  <body>
 
     <%- include ('../partials/nav') %>
-    <div class="container-fluid mt-6">
-      <div class="recipes row d-flex">
-        <% recipes.forEach(recipe =>{ %>
-          <div class="card col-lg-2 col-md-3 col-sm-4 card-shadow recipe">
-            <img class="card-img-top" src="../images/<%= recipe.image %>" height="200" alt="Card image">
-            <div class="card-body">
-              <h3 class="card-title"><%= recipe.title%></h3>
-              <p class="card-text"><%= recipe.body.substring(0, 100)%>...</p>
-            </div>
-            <div class="card-footer">
+      <div class="container-fluid mt-6">
+        <div class="recipes row d-flex">
+          <% recipes.forEach(recipe=>{ %>
+            <div class="card col-lg-2 col-md-3 col-sm-4 card-shadow recipe">
+              <img class="card-img-top" src="../images/<%= recipe.image %>" height="200" alt="Card image">
+              <div class="card-body">
+                <h3 class="card-title">
+                  <%= recipe.title%>
+                </h3>
+                <p class="card-text">
+                  <%= recipe.body.substring(0, 100)%>...
+                </p>
+              </div>
+              <div class="card-footer">
                 <a href="/recipe/<%= recipe._id%>" class="btn btn-gold">Read more</a>
+              </div>
             </div>
-          </div>
-        <% }) %>  
+            <% }) %>
+        </div>
+
       </div>
-      
-    </div>
-      
-    <%- include ('../partials/footer') %>
-    <%- include ('../partials/end') %>
+
+      <%- include ('../partials/footer') %>
+        <%- include ('../partials/end') %>

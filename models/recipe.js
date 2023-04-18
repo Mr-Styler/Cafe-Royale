@@ -1,5 +1,5 @@
-var mongoose = require('mongoose')
-var recipeSchema = new mongoose.Schema({
+let mongoose = require('mongoose')
+let recipeSchema = new mongoose.Schema({
     title: String,
     image: String,
     body: String,

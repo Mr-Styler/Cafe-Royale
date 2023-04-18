@@ -22,12 +22,15 @@
           </li>
         </ul>
 
-        <form class="d-flex me-4">
-          <div class="input-group">
-            <input class="form-control nav-input" type="text" placeholder="Search your meal">
-            <button class="btn btn-gold-invert" type="button"><span class="glyphicon glyphicon-search"></span></button>
+        <div class="">
+          <div class="input-group d-flex ms-auto me-auto">
+            <input class="form-control nav-input" type="text" placeholder="Search for your meals..." id="searchInput">
+            <section id="searchResults">
+
+            </section>
           </div>
-        </form>
+        </div>
+          
 
         <ul class="navbar-nav ms-auto d-flex me-2 ">
           <% if (currentUser) { %>

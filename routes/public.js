@@ -6,7 +6,11 @@ router.get("/", publicController.getIndex)
 
 router.get("/recipes", publicController.getRecipes)
 
-router.get("/shop", publicController.getShop)
+router.get("/shop", publicController.getShop);
+
+router.get("/table-booking", publicController.getTableBooking);
+
+router.post("/search", publicController.searchMeals)
 
 router.get("/recipe/:id", publicController.getShowRecipe)
 

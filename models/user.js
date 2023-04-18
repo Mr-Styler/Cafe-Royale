@@ -1,7 +1,7 @@
-var mongoose = require('mongoose')
-var passportLocalMongoose = require("passport-local-mongoose")
+let mongoose = require('mongoose')
+let passportLocalMongoose = require("passport-local-mongoose")
 
-var userSchema = new mongoose.Schema({
+let userSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
     image: String,
@@ -31,15 +31,15 @@ var userSchema = new mongoose.Schema({
 
 userSchema.methods.addToCart = function (productId) {
     this.cart.items.push({productId});
-    console.log(this.cart.items)
     console.log(`added product with id: ${productId} to cart.`);
     return 0;
 }
 
-userSchema.methods.updateCart = () => {
-
+userSchema.methods.updateCart = function (updatedCart) {
+    this.cart = updatedCart;
+    return 0;
 }
 
-userSchema.plugin(passportLocalMongoose)
+userSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model("User", userSchema)

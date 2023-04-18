@@ -1,0 +1,117 @@
+<%- include ('../partials/header') %>
+    <link rel="stylesheet" href="styles/main.css">
+    <title>Checkout</title>
+    </head>
+
+    <body>
+        <%- include ('../partials/nav') %>
+            <div class="checkout-form mt-6 ">
+                <div class="container mt-5">
+                            <form class="checkout-form" action="/order" method="post">
+                    <div class="row">
+                        <div class="col-lg-6 mb-3">
+                            <h1>Billing details</h1>
+                                <input type="text" class="form-control my-3" placeholder="Username" name="username"
+                                    value="<%= currentUser.username %>">
+                                <input type="text" class="form-control mb-3" placeholder="Company Name"
+                                    name="company_name">
+                                <select class="form-control mb-3" name="country" id="">
+                                    <option value="Nigeria">Nigeria</option>
+                                    <option value="United States">United States</option>
+                                    <option value="England">England</option>
+                                    <option value="France">France</option>
+                                    <option value="Belgium">Belgium</option>
+                                </select>
+                                <input type="text" class="form-control mb-3" placeholder="House Address and Street Name"
+                                    name="house_address">
+                                <input type="text" class="form-control mb-3"
+                                    placeholder="Apartment, Suite, Unit, Etc. (Optional)" name="settlement">
+                                <input type="text" class="form-control mb-3" placeholder="State" name="state">
+                                <input type="text" class="form-control mb-3" placeholder="Zip Code" name="zip_code">
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <input type="tel" class="form-control" placeholder="Phone" name="phone"
+                                            value="">
+                                    </div>
+                                    <div class="col">
+                                        <input type="email" class="form-control" placeholder="Email" name="email"
+                                            value="<%= currentUser.email %>">
+                                    </div>
+                                </div>
+                                <label for="info-plus">
+                                    <h3>Additional Information:</h3>
+                                </label>
+                                <textarea class="form-control" rows="5" id="info-plus" name="additional_info"
+                                    placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <h1>Your Order</h1>
+                            <div class="table-responsive order-review">
+                                <table class="table order-review-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="product-name">Product</th>
+                                            <th class="product-total">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% currentUser.cart.items.forEach(product=> { %>
+                                        <tr class="cart_item">
+                                            <td class="product-name">
+                                                <%= product.productId.name %>&nbsp;
+                                                <strong class="product-quantity">× <%= product.quantity %></strong>
+                                            </td>
+                                            <td class="product-total">
+                                                <span class="Price-amount amount">
+                                                    <span class="Price-currencySymbol">$</span><%= product.productId.price * product.quantity %></span>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr class="order-total">
+                                            <th>Total</th>
+                                            <td>
+                                                <strong>
+                                                    <span class="Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span><%= currentUser.cart.total %></span>
+                                                </strong>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                                <div id="payment" class="checkout-payment">
+										<ul class="payment_methods methods">
+											<li class=" payment_method_cheque">
+												<input id="payment_method_cheque" type="radio" class="input-radio" name="payment_method" value="cheque" checked="checked" data-order_button_text="">
+
+												<label for="payment_method_cheque">
+													Check payments </label>
+												<div class="payment_box payment_method_cheque" style="display: block;">
+													<p>Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.
+													</p>
+												</div>
+											</li>
+											<li class=" payment_method_cod">
+												<input id="payment_method_cod" type="radio" class="input-radio" name="payment_method" value="cash" data-order_button_text="">
+
+												<label for="payment_method_cod">
+													Cash on delivery </label>
+												<div class="payment_box payment_method_cod" style="display: block;">
+													<p>Pay with cash upon delivery.</p>
+												</div>
+											</li>
+										</ul>
+										<div class="form-row place-order">
+											<input type="submit" class="btn btn-gold alt" id="place_order" value="Place order" data-value="Place order">
+										</div>
+									</div>
+                            </div>
+                        </div>
+                    </div>
+                            </form>
+
+                </div>
+            </div>
+
+            <%- include ('../partials/footer') %>
+                <%- include ('../partials/end') %>

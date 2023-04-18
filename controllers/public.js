@@ -5,8 +5,9 @@ const Meal = require("../models/meal")
 const mongoose = require("mongoose")
 const User = require("../models/user")
 
-exports.getIndex = (req, res) => {
-    res.render('public/index', {currentUser: req.user})
+exports.getIndex = async (req, res, next) => {
+    const meals = await Meal.find();
+    res.render('public/index', {currentUser: req.user, meals})
 }
 
 exports.getShop = async (req, res, next) => {
@@ -61,4 +62,21 @@ exports.getShowRecipe = (req, res) => {
             res.render('public/show', { currentUser: req.user, recipe: recipe}) 
         }
     })
+}
+
+exports.getTableBooking = async (req, res) => {
+      res.render("public/table-booking", { currentUser: req.user });
+};
+
+exports.searchMeals = async (req, res, next) => {
+    let payload = req.body.value.trim();
+
+    let search = await Meal.find({
+      name: { $regex: new RegExp(payload + ".*", "i") },
+    }).exec();
+
+    search = search.slice(0, 10);
+
+    res.send({ results: search });
+    console.log(search);
 }

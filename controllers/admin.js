@@ -1,11 +1,11 @@
 var Recipe = require("../models/recipe")
 
 exports.getDashboard = (req, res) =>{
-    res.render("admin/dashboard")
+    res.render("admin/dashboard", {currentUser: req.user, pageTitle: 'Your Dashboard'})
 }
 
 exports.getNewRecipe = (req, res) =>{
-    res.render("admin/new")
+    res.render("admin/new", {currentUser: req.user, pageTitle: 'New Recipe'})
 }
 
 exports.postNewRecipe = (req, res) =>{

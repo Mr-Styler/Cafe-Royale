@@ -6,9 +6,11 @@
 
     <%- include ('../partials/nav') %>
 
-    <div class="container-fluid">
+    <div class="container-fluid mt-6">
+        <div class="alert alert-success alert-dismissible" hidden>
+        </div>
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-md-3">
                 <div class="">
                     <h1 class="mt-3 text-center">Settings</h1>
                     <ul class="nav nav-pills flex-column mt-3 text-center">
@@ -25,14 +27,14 @@
                 </div>
                 
             </div>
-            <div class="col-lg-9">
+            <div class="col-lg-9 col-md-9">
                 <div class="mt-3">
                     <!-- Tab panes -->
-                    <div class="tab-content">
+                    <div class="tab-content mb-4">
                         <div class="tab-pane container active" id="personalInfo">
                             <h2>Edit personal information</h2>
 
-                            <form action="/update-me" enctype="multipart/form-data" method="post">
+                            <form action="" enctype="multipart/form-data" method="">
                                 <div class="row mt-3">
                                     <div class="col mb-3">
                                         <label for="username" class="form-label">Username</label>
@@ -46,9 +48,9 @@
                                 
                                 <div class="mb-3">
                                     <label for="profile-pic" class="form-label">Change Picture</label>
-                                    <input type="file" accept="image/*" id="profile-pic" name="image" class="form-control btn-gold">
+                                    <input type="file" accept="image/*" id="profile-pic" name="image" class="form-control settings-input">
                                 </div>
-                                <button type="submit" class="btn btn-gold">Save changes</button>
+                                <button type="button" onclick="updateMe(this)" class="btn btn-gold">Save changes</button>
                             </form>
                         </div>
                         <div class="tab-pane container fade" id="acctSettings">
@@ -89,5 +91,4 @@
           
     <%- include ('../partials/footer') %>
     <%- include ('../partials/end') %>
-
-    <script src="../js/forms.js"></script>
+    <script src="../../js/forms.js"></script>

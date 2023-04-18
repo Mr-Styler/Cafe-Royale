@@ -24,4 +24,4 @@ router.get("/recipes/:id/edit", AdminController.getEditRecipe)
 
 router.put("/recipes/:id/edit", AdminController.putEditRecipe)
 
-module.exports = router
+module.exports = router;

@@ -1,65 +1,449 @@
 <%- include ('../partials/header') %>
 
-<title>Cook App</title>
-</head>
-<body>
+  <title>Cook App</title>
+  </head>
+
+  <body>
 
     <%- include ('../partials/nav') %>
-    <header>
+      <header>
         <div class="page-header min-vh-75" style="background-image: url('./images/banner.jpg');">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-7 d-flex justify-content-center text-md-start text-center flex-column mt-sm-0 mt-7">
-                        <h1 class="text-white">Your Perfect Place to Express how You Feel</h1>
-                        <p class="lead pe-md-5 me-md-5 text-white opacity-8">The time is now for it be okay to be great. People in this world shun people for being nice.</p>
-                        <div class="buttons">
-                        <button type="button" class="btn bg-gradient-primary mt-4">Get Started</button>
-                        <button type="button" class="btn text-white shadow-none mt-4">Read more</button>
-                        </div>
-                    </div>
+          <div class="container">
+            <div class="row">
+              <div
+                class="col-lg-6 col-md-7 section-header d-flex justify-content-center text-md-start text-center flex-column mt-sm-0 mt-7">
+                <h1 class="text-white">Welcome to <span>Cafe Royale</span></h1>
+                <p class="lead pe-md-5 me-md-5 text-white opacity-8">The time is now for it be okay to
+                  be great. People in this world shun people for being nice.</p>
+                <div class="buttons">
+                  <button type="button" class="btn bg-gradient-primary mt-4">Get Started</button>
+                  <button type="button" class="btn text-white shadow-none mt-4">Read more</button>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    </header>
-    <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6 mb-4">
+      </header>
+      <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6 mb-4">
         <section class="py-md-7">
-            <div class="container">
+          <div class="container">
             <div class="row justify-content-start">
-            <div class="col-md-4 ms-md-auto me-md-4">
-            <div class="text-start">
-            <div class="icon icon-md icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4">
-            <i class="material-icons opacity-10">payment</i>
+              <div class="col-md-4 ms-md-auto me-md-4">
+                <div class="text-start">
+                  <a href="/shop">
+                    <h5 class="mt-3">Order Meals</h5>
+                  </a>
+                  <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws every
+                    summer, and that process will continue whatever.</p>
+                </div>
+                <div class="primary text-start border-radius-lg mt-6">
+                  <a href="/contact-us">
+                    <h5 class="mt-3">Host Events</h5>
+                  </a>
+                  <p>People are so scared to lose that they don't even try. Like, one thing people
+                    can't say is that I'm not trying, and I'm not trying my hardest.</p>
+                </div>
+              </div>
+              <div class="col-md-4 me-md-auto ms-md-4">
+                <div class="primary text-start border-radius-lg">
+                  <a href="/blog">
+                    <h5 class="mt-3">Learn</h5>
+                  </a>
+                  <p>The time is now for it to be okay to be great. People in this world shun people
+                    for being great. For being a bright color. What else could rust?</p>
+                </div>
+                <div class="primary text-start border-radius-lg mt-6">
+                  <a href="/table-booking">
+                    <h5 class="mt-3">Book a table</h5>
+                  </a>
+                  <p>If everything I did failed - which it doesn't, it actually succeeds - just the
+                    fact that I'm willing to fail is an inspiration.</p>
+                </div>
+              </div>
             </div>
-            <h5 class="mt-3">Order Meals</h5>
-            <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever.</p>
+          </div>
+        </section>
+      </div>
+      <section class="our-menu">
+        <h3 class="text-center">Check out our menu</h3>
+        <div class="container mt-3">
+          <!-- Nav pills -->
+          <ul class="nav nav-pills justify-content-center" id="menu-nav-tabs" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" data-bs-toggle="pill" href="#starters">Starters</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="pill" href="#breakfast">Breakfast</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="pill" href="#lunch">Lunch</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="pill" href="#dinner">Dinner</a>
+            </li>
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div id="starters" class="container tab-pane active"><br>
+              <h3 class="text-center">Starters</h3>
+              <div class="recipes row d-flex">
+                <% meals.forEach(meal=> { %>
+                  <% if (meal.tags.includes('starters')) { %>
+                    <div class="card col-lg-2 col-md-4 col-sm-4 card-shadow recipe">
+                      <img class="card-img-top" src="../images/<%= meal.image %>" height="200" alt="Card image">
+                      <div class="card-body">
+                        <a class="card-title" href="/shop">
+                          <h5>
+                            <%= meal.name %>
+                          </h5>
+                        </a>
+                        <h6>$<%= meal.price %>
+                        </h6>
+                      </div>
+                    </div>
+                    <% } %>
+                      <% }) %>
+              </div>
             </div>
-            <div class="primary text-start border-radius-lg mt-6">
-            <div class="icon icon-md icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4">
-            <i class="material-icons opacity-10">insights</i>
+            <div id="breakfast" class="container tab-pane fade"><br>
+              <h3 class="text-center">Breakfast</h3>
+              <% meals.forEach(meal=> { %>
+                <% if (meal.tags.includes('breakfast')) { %>
+                  <div class="card col-lg-2 col-md-4 col-sm-4 card-shadow recipe">
+                    <img class="card-img-top" src="../images/<%= meal.image %>" height="200" alt="Card image">
+                    <div class="card-body">
+                      <a class="card-title" href="/shop">
+                        <h5>
+                          <%= meal.name %>
+                        </h5>
+                      </a>
+                      <h6>$<%= meal.price %>
+                      </h6>
+                    </div>
+                  </div>
+                  <% } %>
+                    <% }) %>
             </div>
-            <h5 class="mt-3">Host Events</h5>
-            <p>People are so scared to lose that they don't even try. Like, one thing people can't say is that I'm not trying, and I'm not trying my hardest.</p>
+            <div id="lunch" class="container tab-pane fade"><br>
+              <h3 class="text-center">Lunch</h3>
+              <% meals.forEach(meal=> { %>
+                <% if (meal.tags.includes('lunch')) { %>
+                  <div class="card col-lg-2 col-md-4 col-sm-4 card-shadow recipe">
+                    <img class="card-img-top" src="../images/<%= meal.image %>" height="200" alt="Card image">
+                    <div class="card-body">
+                      <a class="card-title" href="/shop">
+                        <h5>
+                          <%= meal.name %>
+                        </h5>
+                      </a>
+                      <h6>$<%= meal.price %>
+                      </h6>
+                    </div>
+                  </div>
+                  <% } %>
+                    <% }) %>
             </div>
+            <div id="dinner" class="container tab-pane fade"><br>
+              <h3 class="text-center">Dinner</h3>
+              <% meals.forEach(meal=> { %>
+                <% if (meal.tags.includes('dinner')) { %>
+                  <div class="card col-lg-2 col-md-4 col-sm-4 card-shadow recipe">
+                    <img class="card-img-top" src="../images/<%= meal.image %>" height="200" alt="Card image">
+                    <div class="card-body">
+                      <a class="card-title" href="/shop">
+                        <h5>
+                          <%= meal.name %>
+                        </h5>
+                      </a>
+                      <h6>$<%= meal.price %>
+                      </h6>
+                    </div>
+                  </div>
+                  <% } %>
+                    <% }) %>
             </div>
-            <div class="col-md-4 me-md-auto ms-md-4">
-            <div class="primary text-start border-radius-lg">
-            <div class="icon icon-md icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4">
-            <i class="material-icons opacity-10">access_alarms</i>
+          </div>
+        </div>
+      </section>
+      <section class="table-booking-section mb-3 mt-3">
+        <div class="container">
+          <div class="row">
+            <div class="display-3 auth-header text-center mb-4">Book A Table</div>
+            <div class="col-lg-4 col-md-4">
+              <img class="img-fluid" src="../../images/events-3.jpg" alt="">
             </div>
-            <h5 class="mt-3">Learn</h5>
-            <p>The time is now for it to be okay to be great. People in this world shun people for being great. For being a bright color. What else could rust?</p>
+            <div class="col-lg-8 col-md-8 py-5">
+              <form action="/table-booking" method="post" role="form" class="table-booking-form" data-aos="fade-up"
+                data-aos-delay="100">
+                <div class="row gy-4">
+                  <div class="col-lg-4 col-md-6">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
+                      data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                    <div class="validate"></div>
+                  </div>
+                  <div class="col-lg-4 col-md-6">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"
+                      data-rule="email" data-msg="Please enter a valid email">
+                    <div class="validate"></div>
+                  </div>
+                  <div class="col-lg-4 col-md-6">
+                    <input type="text" class="form-control" name="phone" id="phone" placeholder="Your Phone"
+                      data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                    <div class="validate"></div>
+                  </div>
+                  <div class="col-lg-4 col-md-6">
+                    <input type="text" name="date" class="form-control" id="date" placeholder="Date"
+                      data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                    <div class="validate"></div>
+                  </div>
+                  <div class="col-lg-4 col-md-6">
+                    <input type="text" class="form-control" name="time" id="time" placeholder="Time"
+                      data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                    <div class="validate"></div>
+                  </div>
+                  <div class="col-lg-4 col-md-6">
+                    <input type="number" class="form-control" name="people" id="people" placeholder="# of people"
+                      data-rule="minlen:1" data-msg="Please enter at least 1 chars">
+                    <div class="validate"></div>
+                  </div>
+                </div>
+                <div class="form-group mt-3">
+                  <textarea class="form-control" name="message" rows="5" placeholder="Message"></textarea>
+                  <div class="validate"></div>
+                </div>
+                <div class="text-center"><button class="btn btn-gold mt-3" type="submit">Book a Table</button></div>
+              </form>
             </div>
-            <div class="primary text-start border-radius-lg mt-6">
-            <div class="icon icon-md icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4">
-            <i class="material-icons opacity-10">sentiment_satisfied</i>
+
+          </div>
+        </div>
+
+      </section>
+
+      <section class="testimonials p-5">
+        <div class="section-header text-center pt-2">
+          <h2>Testimonials</h2>
+          <p>What Are They <span>Saying About Us</span></p>
+        </div>
+        <!-- Carousel -->
+        <div id="testimonials" class="carousel slide" data-bs-ride="carousel">
+
+          <!-- The slideshow/carousel -->
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="testimonial-item">
+                <div class="row gy-4 justify-content-center">
+                  <div class="col-lg-6">
+                    <div class="testimonial-content">
+                      <p>
+                        <i class="bi bi-quote quote-icon-left"></i>
+                        Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim
+                        culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum
+                        quid.
+                        <i class="bi bi-quote quote-icon-right"></i>
+                      </p>
+                      <h3>John Larson</h3>
+                      <h4>Entrepreneur</h4>
+                      <div class="stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                          class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 text-center">
+                    <img src="../images/img-4.png" class="img-fluid testimonial-img" alt="">
+                  </div>
+                </div>
+              </div>
             </div>
-            <h5 class="mt-3">Be Informed</h5>
-            <p>If everything I did failed - which it doesn't, it actually succeeds - just the fact that I'm willing to fail is an inspiration.</p>
+            <div class="carousel-item">
+              <div class="testimonial-item">
+                <div class="row gy-4 justify-content-center">
+                  <div class="col-lg-6">
+                    <div class="testimonial-content">
+                      <p>
+                        <i class="bi bi-quote quote-icon-left"></i>
+                        Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim
+                        culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum
+                        quid.
+                        <i class="bi bi-quote quote-icon-right"></i>
+                      </p>
+                      <h3>John Larson</h3>
+                      <h4>Entrepreneur</h4>
+                      <div class="stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                          class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 text-center">
+                    <img src="../images/img-3.png" class="img-fluid testimonial-img" alt="">
+                  </div>
+                </div>
+              </div>
             </div>
+            <div class="carousel-item">
+              <div class="testimonial-item">
+                <div class="row gy-4 justify-content-center">
+                  <div class="col-lg-6">
+                    <div class="testimonial-content">
+                      <p>
+                        <i class="bi bi-quote quote-icon-left"></i>
+                        Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim
+                        culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum
+                        quid.
+                        <i class="bi bi-quote quote-icon-right"></i>
+                      </p>
+                      <h3>John Larson</h3>
+                      <h4>Entrepreneur</h4>
+                      <div class="stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                          class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 text-center">
+                    <img src="../images/img-2.png" class="img-fluid testimonial-img" alt="">
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
+
+          <!-- Indicators/dots -->
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#testimonials" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#testimonials" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#testimonials" data-bs-slide-to="2"></button>
+          </div>
+
+        </div>
+      </section>
+      <section class="share-moments my-3">
+        <h3 class="text-center">Share your moments with us</h3>
+
+        <!-- Carousel -->
+        <div id="share-moments" class="carousel slide" data-bs-ride="carousel">
+
+          <!-- Indicators/dots -->
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#share-moments" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#share-moments" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#share-moments" data-bs-slide-to="2"></button>
+          </div>
+
+          <!-- The slideshow/carousel -->
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="img-fluid" src="../images/events-1.jpg" alt="Los Angeles">
+              <div class="carousel-caption">
+                <h2><strong>Birthday Parties</strong></h2>
+                <h3><span>$499</span></h3>
+                <p>We had such a great time in LA!</p>
+              </div>
             </div>
+            <div class="carousel-item">
+              <img class="img-fluid" src="../images/events-2.jpg" alt="Los Angeles">
+              <div class="carousel-caption">
+                <h2><strong>Private Parties</strong></h2>
+                <h3><span>$299</span></h3>
+                <p>We had such a great time in LA!</p>
+              </div>
             </div>
-            </section>
-    </div>
-    <%- include ('../partials/footer') %>
-    <%- include ('../partials/end') %>
+            <div class="carousel-item">
+              <img class="img-fluid" src="../images/events-3.jpg" alt="Los Angeles">
+              <div class="carousel-caption">
+                <h2><strong>Custom Parties</strong></h2>
+                <h3><span>$99</span></h3>
+                <p>We had such a great time in LA!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="contact my-5">
+        <div class="container aos-init aos-animate" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2 class="text-center">Contact</h2>
+          <p class="text-center">Need Help? <span>Contact Us</span></p>
+        </div>
+
+        <div class="mb-3">
+          <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen=""></iframe>
+        </div><!-- End Google Maps -->
+
+        <div class="row">
+
+          <div class="col-md-6">
+            <div class="info-item  d-flex align-items-center">
+              <i class="icon bi bi-map flex-shrink-0"></i>
+              <div>
+                <h3>Our Address</h3>
+                <p>A108 Adam Street, New York, NY 535022</p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-6">
+            <div class="info-item d-flex align-items-center">
+              <i class="icon bi bi-envelope flex-shrink-0"></i>
+              <div>
+                <h3>Email Us</h3>
+                <p>contact@example.com</p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-6">
+            <div class="info-item  d-flex align-items-center">
+              <i class="icon bi bi-telephone flex-shrink-0"></i>
+              <div>
+                <h3>Call Us</h3>
+                <p>+1 5589 55488 55</p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-6">
+            <div class="info-item  d-flex align-items-center">
+              <i class="icon bi bi-share flex-shrink-0"></i>
+              <div>
+                <h3>Opening Hours</h3>
+                <div><strong>Mon-Sat:</strong> 11AM - 23PM;
+                  <strong>Sunday:</strong> Closed
+                </div>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+        </div>
+
+        <form action="forms" method="post" role="form" class="contact-form mt-3">
+          <div class="row">
+            <div class="col-xl-6 form-group mb-3">
+              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required="">
+            </div>
+            <div class="col-xl-6 form-group mb-3">
+              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required="">
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required="">
+          </div>
+          <div class="form-group mb-3">
+            <textarea class="form-control" name="message" rows="5" placeholder="Message" required=""></textarea>
+          </div>
+          <div class="my-3">
+            <div class="loading">Loading</div>
+            <div class="error-message"></div>
+            <div class="sent-message">Your message has been sent. Thank you!</div>
+          </div>
+          <div class="text-center"><button class="btn btn-gold" type="submit">Send Message</button></div>
+        </form><!--End Contact Form -->
+
+      </div>
+      </section>
+      <%- include ('../partials/footer') %>
+        <%- include ('../partials/end') %>

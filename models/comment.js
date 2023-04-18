@@ -1,5 +1,5 @@
-var mongoose = require('mongoose')
-var commentSchema = new mongoose.Schema({
+let mongoose = require('mongoose')
+let commentSchema = new mongoose.Schema({
     author: String,
     body: String,
     created: {type: Date, default: Date.now()},
